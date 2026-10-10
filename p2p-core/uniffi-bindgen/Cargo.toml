@@ -1,0 +1,10 @@
+[package]
+name = "uniffi-bindgen"
+version = "0.1.0"
+edition = "2021"
+
+# Standalone so generating bindings never compiles librqbit for the host.
+[workspace]
+
+[dependencies]
+uniffi = { version = "0.29", features = ["cli"] }

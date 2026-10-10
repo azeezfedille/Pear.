@@ -1,0 +1,58 @@
+name: MediaHub
+options:
+  bundleIdPrefix: com.mediahub
+  deploymentTarget:
+    iOS: "26.0"
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+packages:
+  # FFmpeg demux + VideoToolbox hardware decode: plays MKV and every audio codec with native-player battery use.
+  AetherEngine:
+    url: https://github.com/superuser404notfound/AetherEngine
+    from: 7.16.1
+targets:
+  MediaHub:
+    type: application
+    platform: iOS
+    sources: [MediaHub]
+    dependencies:
+      - package: AetherEngine
+      # Rust P2P core (built by p2p-core/scripts/build-xcframework.sh). Static: link only, never embed.
+      - framework: Vendor/P2PCore.xcframework
+        embed: false
+      - sdk: Security.framework
+      - sdk: SystemConfiguration.framework
+    info:
+      path: Config/Info.plist
+      properties:
+        # Needed for Picture in Picture and audio when the app is backgrounded.
+        UIBackgroundModes: [audio]
+        # Jellyfin / Plex servers on the home network (iOS asks the first time one is reached over Wi-Fi).
+        NSLocalNetworkUsageDescription: "Pear connects to your Jellyfin or Plex server on your home network."
+        CFBundleDisplayName: "Pear."
+        # Version comes from MARKETING_VERSION / CURRENT_PROJECT_VERSION below (XcodeGen would otherwise write 1.0 / 1).
+        CFBundleShortVersionString: "$(MARKETING_VERSION)"
+        CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
+        # Same near-black as the intro, so the system launch screen hands over to it without a flash.
+        UILaunchScreen:
+          UIColorName: LaunchBackground
+        # Portrait by default; the player unlocks landscape at runtime (see OrientationLock).
+        # Landscape must be declared here or the app can't rotate into it.
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait, UIInterfaceOrientationLandscapeLeft, UIInterfaceOrientationLandscapeRight]
+        UISupportedInterfaceOrientations~ipad: [UIInterfaceOrientationPortrait, UIInterfaceOrientationPortraitUpsideDown, UIInterfaceOrientationLandscapeLeft, UIInterfaceOrientationLandscapeRight]
+        # Many debrid links are plain http://. The player engine fetches with URLSession (not AVFoundation),
+        # so it needs the general exception; the ForMedia key alone only covers AVPlayer.
+        NSAppTransportSecurity:
+          NSAllowsArbitraryLoads: true
+          NSAllowsArbitraryLoadsForMedia: true
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.mediahub.pear
+        MARKETING_VERSION: "0.1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        GENERATE_INFOPLIST_FILE: YES
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        TARGETED_DEVICE_FAMILY: "1,2"
+        OTHER_LDFLAGS: "$(inherited) -lresolv"

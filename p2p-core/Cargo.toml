@@ -1,0 +1,29 @@
+[package]
+name = "p2p_core"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "p2p_core"
+crate-type = ["staticlib", "lib"]
+
+[dependencies]
+# Pin to the exact 8.x you resolve on first build (cargo update -p librqbit --precise X.Y.Z).
+librqbit = { version = "8", default-features = false, features = ["rust-tls"] }
+tokio = { version = "1", features = ["rt-multi-thread", "net", "time", "sync", "macros", "io-util"] }
+tokio-util = "0.7"
+hyper = { version = "1", features = ["http1", "server"] }
+hyper-util = { version = "0.1", features = ["tokio"] }
+http-body-util = "0.1"
+bytes = "1"
+futures-util = "0.3"
+uniffi = "0.29"
+thiserror = "2"
+url = "2"
+rand = "0.8"
+
+[profile.release]
+opt-level = "z"
+lto = "fat"
+codegen-units = 1
+strip = true

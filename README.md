@@ -11,20 +11,20 @@ It's pure SwiftUI: no web views, no cross-platform shell. It runs on iPhone and 
 ## Screenshots
 
 <p align="center">
-  <img src="docs/screenshots/01.webp" width="170" alt="Pear. screenshot 1">
-  <img src="docs/screenshots/02.webp" width="170" alt="Pear. screenshot 2">
-  <img src="docs/screenshots/03.webp" width="170" alt="Pear. screenshot 3">
-  <img src="docs/screenshots/04.webp" width="170" alt="Pear. screenshot 4">
-  <img src="docs/screenshots/05.webp" width="170" alt="Pear. screenshot 5">
+  <img src="docs/screenshots/01.webp" width="23%" alt="Home with the trending hero carousel">
+  <img src="docs/screenshots/02.webp" width="23%" alt="Home rows: Continue Watching and recommendations">
+  <img src="docs/screenshots/03.webp" width="23%" alt="Explore with genre, year and sort filters">
+  <img src="docs/screenshots/04.webp" width="23%" alt="Library with Watching, Completed and Plan to Watch">
 </p>
 <p align="center">
-  <img src="docs/screenshots/06.webp" width="170" alt="Pear. screenshot 6">
-  <img src="docs/screenshots/09.webp" width="170" alt="Pear. screenshot 9">
-  <img src="docs/screenshots/10.webp" width="170" alt="Pear. screenshot 10">
+  <img src="docs/screenshots/05.webp" width="23%" alt="Title page with ratings and play button">
+  <img src="docs/screenshots/06.webp" width="23%" alt="Seasons, episode cards and trailers">
+  <img src="docs/screenshots/09.webp" width="23%" alt="Profile switcher with Simkl and Downloads">
+  <img src="docs/screenshots/10.webp" width="23%" alt="Profile page with integrations and library settings">
 </p>
 <p align="center">
-  <img src="docs/screenshots/07.webp" width="400" alt="Pear. player in landscape">
-  <img src="docs/screenshots/08.webp" width="400" alt="Pear. player in landscape">
+  <img src="docs/screenshots/07.webp" width="46%" alt="Player controls in landscape">
+  <img src="docs/screenshots/08.webp" width="46%" alt="Player info card in landscape">
 </p>
 
 ## At a glance

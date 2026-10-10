@@ -19,10 +19,12 @@ It's pure SwiftUI: no web views, no cross-platform shell. It runs on iPhone and 
 </p>
 <p align="center">
   <img src="docs/screenshots/06.webp" width="170" alt="Pear. screenshot 6">
-  <img src="docs/screenshots/07.webp" width="170" alt="Pear. screenshot 7">
-  <img src="docs/screenshots/08.webp" width="170" alt="Pear. screenshot 8">
   <img src="docs/screenshots/09.webp" width="170" alt="Pear. screenshot 9">
   <img src="docs/screenshots/10.webp" width="170" alt="Pear. screenshot 10">
+</p>
+<p align="center">
+  <img src="docs/screenshots/07.webp" width="400" alt="Pear. player in landscape">
+  <img src="docs/screenshots/08.webp" width="400" alt="Pear. player in landscape">
 </p>
 
 ## At a glance

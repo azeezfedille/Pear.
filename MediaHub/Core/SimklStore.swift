@@ -26,11 +26,7 @@ private struct TokenResponse: Decodable {
 /// RFC 6749 error envelope: branch on `error`, never on `errorDescription`.
 private struct OAuthError: Decodable { let error: String; let errorDescription: String? }
 
-/// Skips one malformed entry instead of failing the whole library.
-private struct Lossy<T: Decodable>: Decodable {
-    let value: T?
-    init(from d: Decoder) throws { value = try? T(from: d) }
-}
+// `Lossy` (skip one malformed entry instead of failing the whole library) is shared; see MediaServerCore.swift.
 private struct AllItems: Decodable {
     let movies: [Entry]; let shows: [Entry]; let anime: [Entry]
     enum K: String, CodingKey { case movies, shows, anime }

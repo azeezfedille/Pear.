@@ -1,0 +1,54 @@
+name: Build IPA
+# Manual only: run it from the Actions tab -> "Build IPA" -> "Run workflow".
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v4
+      - run: xcodebuild -version
+      - name: Restore Cargo cache
+        id: cargo-cache
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            p2p-core/target
+            p2p-core/uniffi-bindgen/target
+            p2p-core/Cargo.lock
+            p2p-core/uniffi-bindgen/Cargo.lock
+          key: cargo-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('p2p-core/Cargo.toml', 'p2p-core/uniffi-bindgen/Cargo.toml') }}
+          restore-keys: |
+            cargo-${{ runner.os }}-${{ runner.arch }}-
+      - name: Build P2PCore.xcframework
+        run: bash ./p2p-core/scripts/build-xcframework.sh
+      # Saved right after the Rust build, so a later Xcode failure can't lose the cache.
+      - name: Save Cargo cache
+        if: steps.cargo-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            p2p-core/target
+            p2p-core/uniffi-bindgen/target
+            p2p-core/Cargo.lock
+            p2p-core/uniffi-bindgen/Cargo.lock
+          key: ${{ steps.cargo-cache.outputs.cache-primary-key }}
+      - run: brew install xcodegen && xcodegen
+      - name: Build (unsigned)
+        run: |
+          xcodebuild -project MediaHub.xcodeproj -scheme MediaHub -configuration Release \
+            -sdk iphoneos -destination 'generic/platform=iOS' -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" build
+      - name: Package IPA
+        run: |
+          mkdir Payload
+          cp -R build/Build/Products/Release-iphoneos/MediaHub.app Payload/
+          zip -qr MediaHub.ipa Payload
+      - uses: actions/upload-artifact@v4
+        with:
+          name: MediaHub-ipa
+          path: MediaHub.ipa

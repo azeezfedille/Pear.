@@ -8,6 +8,23 @@ It's pure SwiftUI: no web views, no cross-platform shell. It runs on iPhone and 
 
 > Pear. doesn't host, provide or index any media. Sources come only from the add-ons, servers and links you add yourself. Everything is saved per profile and stays on your device unless you connect a service.
 
+## Screenshots
+
+<p align="center">
+  <img src="docs/screenshots/01.webp" width="170" alt="Pear. screenshot 1">
+  <img src="docs/screenshots/02.webp" width="170" alt="Pear. screenshot 2">
+  <img src="docs/screenshots/03.webp" width="170" alt="Pear. screenshot 3">
+  <img src="docs/screenshots/04.webp" width="170" alt="Pear. screenshot 4">
+  <img src="docs/screenshots/05.webp" width="170" alt="Pear. screenshot 5">
+</p>
+<p align="center">
+  <img src="docs/screenshots/06.webp" width="170" alt="Pear. screenshot 6">
+  <img src="docs/screenshots/07.webp" width="170" alt="Pear. screenshot 7">
+  <img src="docs/screenshots/08.webp" width="170" alt="Pear. screenshot 8">
+  <img src="docs/screenshots/09.webp" width="170" alt="Pear. screenshot 9">
+  <img src="docs/screenshots/10.webp" width="170" alt="Pear. screenshot 10">
+</p>
+
 ## At a glance
 
 | | |

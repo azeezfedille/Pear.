@@ -8,6 +8,10 @@ It's pure SwiftUI: no web views, no cross-platform shell. It runs on iPhone and 
 
 > Pear. doesn't host, provide or index any media. Sources come only from the add-ons, servers and links you add yourself. Everything is saved per profile and stays on your device unless you connect a service.
 
+##A note on AI assistance
+The app was created with the assistance of AI tools. They helped throughout the development. However the ideas and directions and decisions behind the app were human made, and the app went through multiple tests to confirm that it is up to standards. 
+
+
 ## Screenshots
 
 <p align="center">
